@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    environment {
+        // Optional environment variables
+        REPO_URL = 'https://github.com/your-username/your-public-repo.git'
+        BRANCH = 'main'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: "${BRANCH}", url: "${REPO_URL}"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building the project..."
+                // Add your build tool command here
+                // For example, for Java/Maven: sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+                // Add your test command here
+                // For example: sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying the application..."
+                // Deployment commands go here
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline faile
