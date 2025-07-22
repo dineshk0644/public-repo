@@ -33,6 +33,7 @@
         stage('Deploy') {
             steps {
                 echo "Deploying the application..."
+                echo " h;''jvjkl;"
                 // Deployment commands go here
             }
         }
